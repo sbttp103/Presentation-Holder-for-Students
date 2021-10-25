@@ -1,4 +1,4 @@
-# Team1Project6
+# Presentation Reviewer for Students
 
 ## In this project, we build a website for reviewing student presentations.
 
