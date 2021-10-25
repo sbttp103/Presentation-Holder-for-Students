@@ -1,0 +1,36 @@
+<div class="container">
+<section>
+	<div>
+		<div>
+			<div>
+			</br>
+				<h2>Sign in</h2>
+				</br>
+				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+				  <div>
+				  	<div>
+				    	<%= f.input :email, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+				    </div>
+				  </div>
+					</br>
+				  <div>
+				  	<div>
+				    <%= f.input :password, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+						</div>
+					</div>
+					</br>
+					<div>
+				  	<div>
+				    <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
+				  	</div>
+					</div>
+					</br>
+				  <%= f.button :submit, "Sign in", class:"btn btn-primary" %>
+				<% end %>
+				<br/>
+				<%= render "devise/shared/links" %>
+			</div>
+		</div>
+	</div>
+</section>

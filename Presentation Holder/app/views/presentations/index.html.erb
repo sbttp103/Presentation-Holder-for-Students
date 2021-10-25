@@ -1,0 +1,91 @@
+<div class="container">
+
+</br>
+<div>
+  <h1> Welcome to TeamOne's presentation feedback website! </h1>  
+</div>
+
+<% if has_role?(:admin) %>
+</br>
+  <h3>Presentations</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Grade</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @presentations.each do |presentation| %>
+      <tr>
+        <td><%= presentation.title %></td>
+        <td><%= presentation.author %></td>
+        <td><%= presentation.grade %></td>
+        <td><%= link_to 'Show', presentation %></td>
+        <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
+        <td><%= link_to 'Destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  </br>
+  <h3>Students</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <% if not user.has_role?(:admin) %>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+
+
+
+<%= link_to 'New Presentation', new_presentation_path, class:"btn btn-primary" %>
+
+<% end %>
+
+<div>
+  </br>
+  </br>
+  <h3>Latest Presentations</h3>
+  <div>
+    <% @presentations.each do |presentation| %>
+      <div>
+        <div class="jumbotron">
+        </br>
+        <p class="lead"><%= presentation.author %></p>
+        <div>
+        <%= link_to presentation do %>
+          <%= truncate(presentation.title, length: 140) %>
+        <% end %>
+        
+        <p><em><small>Posted by <%= presentation.user.username %></small></em></p>
+        <hr class="my-4">
+  </div>
+    
+      </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

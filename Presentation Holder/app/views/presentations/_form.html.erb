@@ -1,0 +1,36 @@
+
+<%= simple_form_for(@presentation) do |f| %>
+  <%= f.error_notification %>
+
+  </br>
+  <div>
+    <div>
+      <%= f.input :title, required: true%>
+    </div>
+  </div>
+
+  </br>
+  <div>
+    <div>
+      <%= f.input :author, required: true%>
+    </div>
+  </div>
+
+  </br>
+  <div>
+    <div>
+      <%= f.input :grade, required: false%>
+    </div>
+  </div>
+
+  
+  </br>
+  <div>
+    <div>
+      <%= f.button :submit, class:"btn btn-primary" %>
+    </div>
+    </br>
+  </div>
+
+<% end %>
+

@@ -1,0 +1,64 @@
+
+<div class="container">
+
+</br>
+<% if has_role?(:admin) %>
+  <div class="jumbotron">
+  <h1 class="display-4"> Event: <%= @presentation.title %></h1>
+  </br>
+  <p class="lead">
+    <strong>Title:</strong>
+    <%= @presentation.title %>
+  </p>
+
+  <p class="lead">
+    <strong>Author:</strong>
+    <%= @presentation.author %>
+  </p>
+
+  <p class="lead">
+    <strong>Grade:</strong>
+    <%= @presentation.grade %>
+  </p>
+  
+  </div>
+
+  <%= link_to 'Edit', edit_presentation_path(@presentation), class:"btn btn-primary" %>
+  <%= link_to 'Back', presentations_path, class:"btn btn-primary" %>
+  </br>
+<% end %>
+
+<div>
+  <div>
+    
+
+    <div>
+      <div>
+
+        
+      </div>
+    </div>
+    </br>
+    <hr/>
+    <p>There are <%= @presentation.feedbacks.count %> feedbacks now.</p>
+
+    <div id="presentation-feedbacks">
+    	<%= render @presentation.feedbacks %>
+    </div>
+
+
+
+    <hr/>
+    </br>
+    <h3>Leave a feedback</h3>
+    <% if user_signed_in? %>
+    	<%= render 'feedbacks/form' %>
+    <% else %>
+      <p>To leave a feedback you need to <%= link_to 'login', new_user_session_path %>. Don't have an account?
+      <%= link_to 'Sign up', new_user_registration_path %> for one.</p>
+    <% end %>
+
+  </div>
+
+
+</div>
